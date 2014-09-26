@@ -1,0 +1,9 @@
+{
+  "name": "angularjs-sample",
+  "description": "A starter project for AngularJS",
+  "dependencies": {
+    "express": "~4.0.0",
+    "debug": "~0.7.4",
+    "connect": "^2.17.1"
+        }
+}
