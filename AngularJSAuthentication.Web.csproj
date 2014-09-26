@@ -91,7 +91,7 @@
     <Content Include="client\content\fonts\fontawesome-webfont.woff" />
     <Content Include="client\content\fonts\FontAwesome.otf" />
     <Content Include="package.json" />
-    <Content Include="server.js" />
+    <Content Include="init.js" />
     <Content Include="app.js" />
   </ItemGroup>
   <ItemGroup>

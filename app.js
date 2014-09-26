@@ -1,5 +1,5 @@
 var debug = require('debug')('angularjs-sample');
-var app = require('./server');
+var app = require('./init');
 
 app.set('port', process.env.PORT || 3000);
 

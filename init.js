@@ -36,4 +36,4 @@ server.use(function (err, req, res, next) {
     });
 });
 
-module.exports = server;
+module.exports = init;
