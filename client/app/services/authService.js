@@ -20,7 +20,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         _logOut();
 
-        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
+        return $http.post(serviceBase + 'account/register', registration).then(function (response) {
             return response;
         });
 
@@ -112,21 +112,27 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
     var _obtainAccessToken = function (externalData) {
 
         var deferred = $q.defer();
+        
+        localStorageService.set('authorizationData', { token: externalData.external_access_token, userName: externalData.external_user_name, refreshToken: "", useRefreshTokens: false });
+        
+        _authentication.isAuth = true;
+        _authentication.userName = response.userName;
+        _authentication.useRefreshTokens = false;
 
-        $http.get(serviceBase + 'api/account/ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).success(function (response) {
+        //$http.get(serviceBase + 'account/ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+        //    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
 
-            _authentication.isAuth = true;
-            _authentication.userName = response.userName;
-            _authentication.useRefreshTokens = false;
+        //    _authentication.isAuth = true;
+        //    _authentication.userName = response.userName;
+        //    _authentication.useRefreshTokens = false;
 
-            deferred.resolve(response);
+        //    deferred.resolve(response);
 
-        }).error(function (err, status) {
-            _logOut();
-            deferred.reject(err);
-        });
+        //}).error(function (err, status) {
+        //    _logOut();
+        //    deferred.reject(err);
+        //});
 
         return deferred.promise;
 
