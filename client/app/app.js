@@ -46,8 +46,8 @@ app.config(function ($routeProvider) {
 
 });
 
-var serviceBase = 'http://localhost:43868/';
-//var serviceBase = 'http://navigatortest.azurewebsites.net/';
+//var serviceBase = 'http://localhost:43868/';
+var serviceBase = 'http://navigatortest.azurewebsites.net/';
 //var serviceBase = 'http://127.0.0.1:43868/'
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
