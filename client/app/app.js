@@ -21,6 +21,11 @@ app.config(function ($routeProvider) {
         controller: "ordersController",
         templateUrl: "/app/views/orders.html"
     });
+    
+    $routeProvider.when("/locations", {
+        controller: "locationsController",
+        templateUrl: "/app/views/locations.html"
+    });
 
     $routeProvider.when("/refresh", {
         controller: "refreshController",
@@ -41,12 +46,12 @@ app.config(function ($routeProvider) {
 
 });
 
-//var serviceBase = 'http://localhost:26264/';
-var serviceBase = 'http://navigatortest.azurewebsites.net/';
+var serviceBase = 'http://localhost:43868/';
+//var serviceBase = 'http://navigatortest.azurewebsites.net/';
 //var serviceBase = 'http://127.0.0.1:43868/'
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
-    clientId: '126018090035.apps.googleusercontent.com'
+    clientId: 'test'
 });
 
 app.config(function ($httpProvider) {
