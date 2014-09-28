@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', function ($scope, $location, authService, ngAuthSettings) {
+app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings','$cookies', function ($scope, $location, authService, ngAuthSettings, $cookies) {
 
     $scope.loginData = {
         userName: "",
@@ -46,32 +46,13 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         $scope.$apply(function () {
 
-            if (fragment.haslocalaccount == 'False') {
-
-                authService.logOut();
-
-                authService.externalAuthData = {
-                    provider: fragment.provider,
-                    userName: fragment.external_user_name,
-                    externalAccessToken: fragment.external_access_token
-                };
-
-                $location.path('/associate');
-
-            }
-            else {
-                //Obtain access token and redirect to orders
-                var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
-                authService.obtainAccessToken(fragment).then(function (response) {
-
-                    $location.path('/orders');
-
-                },
-             function (err) {
-                 $scope.message = err.error_description;
-             });
-            }
-
+            //var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
+            var userId = $cookies['csrftoken'];
+            userId = $cookies['userId'];
+            userId = $cookies.userId;
+            authService.obtainAccessToken(fragment).then(function (response) {
+                $location.path('/orders');
+            });
         });
     }
 }]);

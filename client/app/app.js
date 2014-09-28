@@ -1,4 +1,4 @@
-﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar']);
+﻿var app = angular.module('AngularAuthApp', ['ngRoute', 'LocalStorageModule', 'angular-loading-bar', 'ngCookies']);
 
 app.config(function ($routeProvider) {
 
@@ -21,11 +21,6 @@ app.config(function ($routeProvider) {
         controller: "ordersController",
         templateUrl: "/app/views/orders.html"
     });
-    
-    $routeProvider.when("/locations", {
-        controller: "locationsController",
-        templateUrl: "/app/views/locations.html"
-    });
 
     $routeProvider.when("/refresh", {
         controller: "refreshController",
@@ -46,8 +41,8 @@ app.config(function ($routeProvider) {
 
 });
 
-//var serviceBase = 'http://localhost:43868/';
-var serviceBase = 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/';
+var serviceBase = 'http://localhost:43868/';
+//var serviceBase = 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/';
 //var serviceBase = 'http://127.0.0.1:43868/'
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
@@ -55,6 +50,9 @@ app.constant('ngAuthSettings', {
 });
 
 app.config(function ($httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.useXDomain = true;
+    //delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $httpProvider.interceptors.push('authInterceptorService');
 });
 

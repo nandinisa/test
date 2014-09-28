@@ -7,26 +7,31 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Customer</th>
-                    <th>City</th>
-                    <th>Shipped</th>
+                    <th>ID</th>
+                    <th>Text</th>
+                    <th>Creator</th>
+                    <th>Kind</th>
+                    <th>Etag</th>
                 </tr>
             </thead>
             <tbody>
                 <tr data-ng-repeat="order in orders">
                     <td>
-                        {{ order.orderID }}
+                        {{ order.id }}
                     </td>
                     <td>
-                        {{ order.customerName }}
+                        {{ order.text }}
                     </td>
                     <td>
-                        {{ order.shipperCity }}
+                        {{ order.creator }}
                     </td>
                     <td>
-                       <input type="checkbox" data-ng-model="order.isShipped" disabled="disabled">
+                        {{ order.kind }}
                     </td>
+                    <td>
+                        {{ order.etag }}
+                    </td>
+ 
                 </tr>
             </tbody>
         </table>

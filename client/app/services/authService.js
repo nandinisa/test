@@ -113,12 +113,12 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         var deferred = $q.defer();
         
-        localStorageService.set('authorizationData', { token: externalData.external_access_token, userName: externalData.external_user_name, refreshToken: "", useRefreshTokens: false });
+        localStorageService.set('authorizationData', { token: 'dummy', userName: externalData.userName, refreshToken: "", useRefreshTokens: false });
         
         _authentication.isAuth = true;
-        _authentication.userName = response.userName;
+        _authentication.userName = externalData.external_user_name;
         _authentication.useRefreshTokens = false;
-
+        deferred.resolve();
         //$http.get(serviceBase + 'account/ObtainLocalAccessToken', { params: { provider: externalData.provider, externalAccessToken: externalData.externalAccessToken } }).success(function (response) {
 
         //    localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });

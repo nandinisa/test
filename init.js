@@ -9,11 +9,31 @@ var init = express();
 
 init.use(connect.json());
 init.use(connect.urlencoded());
+//init.use(cors({ origin: "*" }));
+
+
+
+//CORS middleware
+var allowCrossDomain = function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials: true');
+    
+    next();
+}
+
+init.use(allowCrossDomain);
+//init.use(express.cookieParser());
 
 // Set routing handler to serve all static files
 // Set the directory public to serve static files
 init.use(express.static(path.join(__dirname, 'client')));
 
+init.get('/timeline', function (err, req, res) {
+    var serviceBase = 'http://localhost:43868/';
+    
+});
 
 // Set error handlers
 // Assign a function as a handler, where error is passed as the first object
