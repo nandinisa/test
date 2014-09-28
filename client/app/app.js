@@ -41,8 +41,8 @@ app.config(function ($routeProvider) {
 
 });
 
-var serviceBase = 'http://localhost:43868/';
-//var serviceBase = 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/';
+//var serviceBase = 'http://localhost:43868/';
+var serviceBase = 'http://6b74cc2ca3764a3db82c8499ef1795aa.cloudapp.net/';
 //var serviceBase = 'http://127.0.0.1:43868/'
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
