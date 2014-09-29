@@ -23,17 +23,13 @@ var allowCrossDomain = function (req, res, next) {
     next();
 }
 
-init.use(allowCrossDomain);
+//init.use(allowCrossDomain);
 //init.use(express.cookieParser());
 
 // Set routing handler to serve all static files
 // Set the directory public to serve static files
 init.use(express.static(path.join(__dirname, 'client')));
 
-init.get('/timeline', function (err, req, res) {
-    var serviceBase = 'http://localhost:43868/';
-    
-});
 
 // Set error handlers
 // Assign a function as a handler, where error is passed as the first object

@@ -13,7 +13,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         authService.login($scope.loginData).then(function (response) {
 
-            $location.path('/orders');
+            $location.path('/timeline');
 
         },
          function (err) {
@@ -51,7 +51,7 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
             userId = $cookies['userId'];
             userId = $cookies.userId;
             authService.obtainAccessToken(fragment).then(function (response) {
-                $location.path('/orders');
+                $location.path('/timeline');
             });
         });
     }

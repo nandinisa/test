@@ -66,6 +66,15 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = false;
+        var data = '';
+
+        //$http.post(serviceBase + 'Account/Logoff', data, { withCredentials: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
+            
+        //    deferred.resolve(response);
+
+        //}).error(function (err, status) {
+        //    deferred.reject(err); 
+        //});
 
     };
 
@@ -113,7 +122,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
 
         var deferred = $q.defer();
         
-        localStorageService.set('authorizationData', { token: 'dummy', userName: externalData.userName, refreshToken: "", useRefreshTokens: false });
+        localStorageService.set('authorizationData', { token: 'test', userName: externalData.userName, refreshToken: "", useRefreshTokens: false });
         
         _authentication.isAuth = true;
         _authentication.userName = externalData.external_user_name;
