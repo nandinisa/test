@@ -45,10 +45,22 @@ window.common = (function () {
 })();
 
 var fragment = common.getFragment();
-
 window.location.hash = fragment.state || '';
+//var caller = null;
+//if (window.dialogArguments) // Internet Explorer supports window.dialogArguments
+//{
+//    caller = window.dialogArguments;
+//} 
+//else // Firefox, Safari, Google Chrome and Opera supports window.opener
+//{
+//    if (window.opener) {
+//        caller = window.opener;
+//    }
+//}
+//caller.$windowScope.authCompletedCB(fragment);
 
-window.opener.$windowScope.authCompletedCB(fragment);
+//window.opener.$windowScope.authCompletedCB(fragment);
 
+//window.location.href = '/#/timeline'; //+ window.location.search;
 window.close();
 
