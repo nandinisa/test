@@ -46,6 +46,8 @@ window.common = (function () {
 
 var fragment = common.getFragment();
 window.location.hash = fragment.state || '';
+alert(window.opener);
+alert(window.close);
 //var caller = null;
 //if (window.dialogArguments) // Internet Explorer supports window.dialogArguments
 //{
