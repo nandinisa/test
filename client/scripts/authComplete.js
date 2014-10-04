@@ -58,9 +58,9 @@ window.location.hash = fragment.state || '';
 //    }
 //}
 //caller.$windowScope.authCompletedCB(fragment);
-
-//window.opener.$windowScope.authCompletedCB(fragment);
-
-//window.location.href = '/#/timeline'; //+ window.location.search;
 window.close();
+
+window.opener.$windowScope.authCompletedCB(fragment);
+//localStorage.setItem('data', fragment);
+//window.location.href = '/#/timeline';//+ window.location.search;
 
