@@ -1,5 +1,5 @@
 ﻿'use strict';
-app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings','$cookies', function ($scope, $location, authService, ngAuthSettings, $cookies) {
+app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuthSettings', function ($scope, $location, authService, ngAuthSettings) {
 
     $scope.loginData = {
         userName: "",
@@ -20,6 +20,25 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
              $scope.message = err.error_description;
          });
     };
+    
+    $scope.testCors = function () {
+        var serviceUrl = 'http://localhost:55450/test/index';
+        
+        //var method = 'post';
+        
+        //$.ajax({
+        //    type: method,
+        //    url: serviceUrl
+        //}).done(function (data) {
+        //    $('#value1').text(data);
+        //}).error(function (jqXHR, textStatus, errorThrown) {
+        //    $('#value1').text(jqXHR.responseText || textStatus);
+        //});
+        //http://localhost:1337/
+        authService.testCors(serviceUrl, 'dummy').then(function (response) {
+            $('#value1').text(response);
+        });
+    }
 
     $scope.authExternalProvider = function (provider) {
 
@@ -35,7 +54,9 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
 
         window.$windowScope = $scope;
 
-        var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
+        var oauthWindow = window.open(externalProviderUrl, 'Account Controller', "location=0,status=0,width=600,height=750");
+        //oauthWindow.opener = true;
+        //window.showModalDialog(externalProviderUrl, window, "dialogHeight:400px; dialogWidth:600px;");
     };
     
     $scope.encodeData = function(data){
@@ -47,10 +68,8 @@ app.controller('loginController', ['$scope', '$location', 'authService', 'ngAuth
         $scope.$apply(function () {
 
             //var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
-            var userId = $cookies['csrftoken'];
-            userId = $cookies['userId'];
-            userId = $cookies.userId;
-            authService.obtainAccessToken(fragment).then(function (response) {
+            
+            authService.setAuthData(fragment).then(function () {
                 $location.path('/timeline');
             });
         });

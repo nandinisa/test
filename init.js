@@ -15,15 +15,15 @@ init.use(connect.urlencoded());
 
 //CORS middleware
 var allowCrossDomain = function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'null');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Credentials: true');
+    res.header('Access-Control-Allow-Credentials', true);
     
     next();
 }
 
-//init.use(allowCrossDomain);
+init.use(allowCrossDomain);
 //init.use(express.cookieParser());
 
 // Set routing handler to serve all static files

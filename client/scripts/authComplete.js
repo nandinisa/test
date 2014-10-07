@@ -46,23 +46,6 @@ window.common = (function () {
 
 var fragment = common.getFragment();
 window.location.hash = fragment.state || '';
-alert(window.opener);
-alert(window.close);
-//var caller = null;
-//if (window.dialogArguments) // Internet Explorer supports window.dialogArguments
-//{
-//    caller = window.dialogArguments;
-//} 
-//else // Firefox, Safari, Google Chrome and Opera supports window.opener
-//{
-//    if (window.opener) {
-//        caller = window.opener;
-//    }
-//}
-//caller.$windowScope.authCompletedCB(fragment);
 window.close();
 
 window.opener.$windowScope.authCompletedCB(fragment);
-//localStorage.setItem('data', fragment);
-//window.location.href = '/#/timeline';//+ window.location.search;
-
