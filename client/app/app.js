@@ -50,8 +50,8 @@ app.constant('ngAuthSettings', {
 });
 
 app.config(function ($httpProvider) {
-    $httpProvider.defaults.withCredentials = true;
-    $httpProvider.defaults.useXDomain = true;
+    //$httpProvider.defaults.withCredentials = true;
+    //$httpProvider.defaults.useXDomain = true;
     //delete $httpProvider.defaults.headers.common['X-Requested-With'];
     //$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     //$httpProvider.defaults.xsrfCookieName = '__RequestVerificationToken';

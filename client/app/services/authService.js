@@ -90,6 +90,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', 'ngAuthSetting
         //var oauthWindow = window.open(externalProviderUrl, '_self', "location=0,status=0,width=600,height=750");
         var deferred = $q.defer();
         $http.post(serviceBase + 'Account/LogOff', data, {
+            withCredentials: true, 
             headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'RequestVerificationToken' : authData.token }
         }).success(function (response) {
             deferred.resolve(response);

@@ -6,7 +6,7 @@ app.factory('timelineService', ['$http', 'ngAuthSettings', function ($http, ngAu
     var timelineServiceFactory = {};
 
     var _getTimeline = function () {
-        return $http.get(serviceBase + 'api/timeline').then(function (results) {
+        return $http.get(serviceBase + 'api/timeline', {withCredentials: true}).then(function (results) {
             return results;
         });
     };
